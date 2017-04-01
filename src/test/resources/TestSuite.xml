@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Course project" verbose="1">
+
+	<test name="Checking bookmarking">
+		<parameter name="login" value="artem_juventini"/>
+		<parameter name="password" value="222222"/>
+		<parameter name="typeOfProduct" value="Холодильники"/>
+		<classes>
+ 			<class name="demo.tests.TestBookmarking" />
+        </classes>
+	</test>
+
+	<test name="Checking sending messages">
+		<parameter name="senderLogin" value="artem_juventini"/>
+		<parameter name="senderPass" value="222222"/>
+		<parameter name="themeOfMessage" value="testTheme"/>
+		<parameter name="textOfMessage" value="blablabla"/>
+		<parameter name="addresseeLogin" value="2182076"/>
+		<parameter name="addresseePassword" value="333333"/>
+		<classes>
+			<class name="demo.tests.TestSendingMessages" />
+		</classes>
+	</test>
+
+	<test name="Check Sorting">
+		<parameter name="model" value="BMW"/>
+		<classes>
+			<class name="demo.tests.TestSorting" />
+		</classes>
+	</test>
+
+	<test name="Check phone producers">
+		<parameter name="producer" value="Apple"/>
+		<classes>
+			<class name="demo.tests.TestProducersOfPhones" />
+		</classes>
+	</test>
+
+
+	<test name="Check adding to cart">
+		<parameter name="login" value="artem_juventini"/>
+		<parameter name="password" value="222222"/>
+		<parameter name="section" value="Фотоаппараты"/>
+		<classes>
+			<class name="demo.tests.TestAddingToCart" />
+		</classes>
+	</test>
+
+
+</suite>

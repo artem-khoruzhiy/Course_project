@@ -1,0 +1,45 @@
+package demo.pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import webdriver.BaseForm;
+import webdriver.elements.CheckBox;
+import java.util.List;
+import static org.testng.Assert.*;
+
+/**
+ * Created by Артем on 30.03.2017.
+ */
+public class MobilePhonesPage extends BaseForm {
+    private String filtersLocator = "//div[@id='schema-filter']/div/div[contains(@class, 'schema-filter__fieldset')]";
+    private String producerLocator = "//ul[@class='schema-filter__list']//span[text()='%s']";
+
+    public MobilePhonesPage(){
+        super(By.xpath("//h1[text()='Мобильные телефоны']"), "Mobile phones page");
+    }
+
+    public void checkCountOfFilters(){
+        List<WebElement> list = browser.getDriver().findElements(By.xpath(filtersLocator));
+        assertTrue(list.size() > 0);
+    }
+
+    public void setProducer(String name){
+        CheckBox checkBox = new CheckBox(By.xpath(String.format(producerLocator, name)), "producer checkbox");
+        checkBox.set();
+    }
+
+    public boolean checkActualNamesOfPhones(String producer){
+        try {
+            Thread.sleep(2000);
+        }catch (InterruptedException e){
+        }
+        List<WebElement> listOfProudcers = browser.getDriver().findElements(By.xpath("//div[@class='schema-product__title']//span"));
+        for (WebElement el : listOfProudcers) {
+            if (el.getText().contains(producer))
+                continue;
+            else
+                return false;
+        }
+        return true;
+    }
+}
