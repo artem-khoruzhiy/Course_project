@@ -37,7 +37,7 @@ public class AutobaraholkaPage extends BaseForm {
         List<WebElement> listOfPricesElements = browser.getDriver().findElements(By.xpath(locForPriceBYN));
         List<Double> prices = new ArrayList<>();
         for(WebElement el : listOfPricesElements){
-            Double price = Double.parseDouble(el.getText().replace(",", ".").replace("\\s", ""));
+            Double price = Double.parseDouble(el.getText().replace(",", ".").replaceAll("\\s", ""));
             prices.add(price);
         }
         return prices;
