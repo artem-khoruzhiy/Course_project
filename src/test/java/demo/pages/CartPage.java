@@ -25,7 +25,7 @@ public class CartPage extends BaseForm {
     public void deleteFromCart(){
         btnDeleteFromCart.click();
         try {
-            Thread.sleep(300);
+            Thread.sleep(500);
         }catch (InterruptedException e){
         }
     }
