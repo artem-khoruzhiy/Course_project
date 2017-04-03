@@ -23,7 +23,7 @@
 	</test>
 
 	<test name="Check Sorting">
-		<parameter name="model" value="BMW"/>
+		<parameter name="model" value="Audi"/>
 		<classes>
 			<class name="demo.tests.TestSorting" />
 		</classes>
@@ -36,7 +36,6 @@
 		</classes>
 	</test>
 
-
 	<test name="Check adding to cart">
 		<parameter name="login" value="artem_juventini"/>
 		<parameter name="password" value="222222"/>
@@ -45,6 +44,5 @@
 			<class name="demo.tests.TestAddingToCart" />
 		</classes>
 	</test>
-
 
 </suite>

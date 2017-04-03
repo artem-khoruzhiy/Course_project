@@ -11,7 +11,7 @@ import webdriver.elements.Label;
 public class MainPageOnliner extends BaseForm {
 
     public MainPageOnliner() {
-        super(By.xpath("//div[@class='b-tiles cfix ']"), "Onliner main page");
+        super(By.xpath("//div[@class='g-middle']"), "Onliner main page");
     }
 
 }

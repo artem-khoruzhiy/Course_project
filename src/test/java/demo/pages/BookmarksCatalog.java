@@ -3,6 +3,7 @@ package demo.pages;
 import org.openqa.selenium.By;
 import webdriver.BaseForm;
 import webdriver.elements.Link;
+import static org.testng.Assert.*;
 
 /**
  * Created by Артем on 28.03.2017.
@@ -16,5 +17,9 @@ public class BookmarksCatalog extends BaseForm {
 
     public String getNameOfFirstProductFromBookmarks(){
         return addedProduct.getText();
+    }
+
+    public void assertTrueProductInBookmarks(String actualName, String expectedName){
+        assertTrue(actualName.contains(expectedName));
     }
 }

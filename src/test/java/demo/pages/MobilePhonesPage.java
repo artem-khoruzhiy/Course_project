@@ -3,6 +3,7 @@ package demo.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import webdriver.BaseForm;
+import webdriver.Browser;
 import webdriver.elements.CheckBox;
 import java.util.List;
 import static org.testng.Assert.*;
@@ -13,6 +14,7 @@ import static org.testng.Assert.*;
 public class MobilePhonesPage extends BaseForm {
     private String filtersLocator = "//div[@id='schema-filter']/div/div[contains(@class, 'schema-filter__fieldset')]";
     private String producerLocator = "//ul[@class='schema-filter__list']//span[text()='%s']";
+    private String allNameOfPhonesLocator = "//div[@class='schema-product__title']//span";
 
     public MobilePhonesPage(){
         super(By.xpath("//h1[text()='Мобильные телефоны']"), "Mobile phones page");
@@ -28,18 +30,15 @@ public class MobilePhonesPage extends BaseForm {
         checkBox.set();
     }
 
-    public boolean checkActualNamesOfPhones(String producer){
+    public void assertTrueProducers(String name){
         try {
             Thread.sleep(2000);
         }catch (InterruptedException e){
         }
-        List<WebElement> listOfProudcers = browser.getDriver().findElements(By.xpath("//div[@class='schema-product__title']//span"));
-        for (WebElement el : listOfProudcers) {
-            if (el.getText().contains(producer))
-                continue;
-            else
-                return false;
+        List<WebElement> listOfProducts = Browser.getInstance().getDriver().findElements(By.xpath(allNameOfPhonesLocator));
+        for (WebElement el : listOfProducts){
+
+            assertTrue(el.getText().contains(name));
         }
-        return true;
     }
 }

@@ -6,7 +6,6 @@ import demo.pages.MainPageOnliner;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import webdriver.BaseTest;
-import static org.testng.Assert.*;
 /**
  * Created by Артем on 29.03.2017.
  */
@@ -21,13 +20,19 @@ public class TestSorting extends BaseTest {
 
     @Override
     public void runTest(){
+        logStep();
         MainPageOnliner mainPageOnliner = new MainPageOnliner();
+
+        logStep();
         CommonElements commonElements = new CommonElements();
         commonElements.navigateOnMainMenu("Автобарахолка");
 
+        logStep();
         AutobaraholkaPage autobaraholkaPage = new AutobaraholkaPage();
         autobaraholkaPage.selectModel(model);
         autobaraholkaPage.sortByPrice();
-        assertTrue(autobaraholkaPage.checkOrder());
+
+        logStep();
+        autobaraholkaPage.checkOrder();
     }
 }

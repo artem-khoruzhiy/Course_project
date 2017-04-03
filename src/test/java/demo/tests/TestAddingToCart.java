@@ -5,7 +5,6 @@ import demo.pages.*;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import webdriver.BaseTest;
-import static org.testng.Assert.*;
 
 /**
  * Created by Артем on 31.03.2017.
@@ -25,37 +24,51 @@ public class TestAddingToCart extends BaseTest{
 
     @Override
     public void runTest(){
+        logStep();
         MainPageOnliner mainPageOnliner = new MainPageOnliner();
 
+        logStep();
         CommonElements commonElements = new CommonElements();
         commonElements.enterToAccount();
 
+        logStep();
         SignInPage signInPage = new SignInPage();
         signInPage.signIn(login, password);
 
-        assertTrue(commonElements.checkSuccessfulLogin(login));
+        logStep();
+        commonElements.checkSuccessfulLogin(login);
+
+        logStep();
         commonElements.navigateOnMainMenu("Каталог");
 
+        logStep();
         CatalogPage catalogPage = new CatalogPage();
         catalogPage.navigateOnCatalogMenu(section);
 
+        logStep();
         CamerasPage camerasPage = new CamerasPage();
         camerasPage.openFirst();
 
+        logStep();
         ConcreteProductPage concreteProductPage = new ConcreteProductPage();
         String nameOfProduct = concreteProductPage.getNameOfProduct();
         concreteProductPage.openOffers();
 
+        logStep();
         OffersPage offersPage = new OffersPage();
         offersPage.addToCart();
 
+        logStep();
         commonElements.openCart();
 
+        logStep();
         CartPage cartPage = new CartPage();
         String productFormCart = cartPage.getNameOfFirstProduct();
 
-        assertTrue(nameOfProduct.contains(productFormCart));
+        logStep();
+        cartPage.assertTrueProduct(nameOfProduct, productFormCart);
 
+        logStep();
         cartPage.deleteFromCart();
     }
 }

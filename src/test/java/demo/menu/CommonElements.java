@@ -3,6 +3,7 @@ package demo.menu;
 import org.openqa.selenium.By;
 import webdriver.elements.Button;
 import webdriver.elements.Label;
+import static org.testng.Assert.*;
 
 /**
  * Created by Артем on 31.03.2017.
@@ -26,11 +27,10 @@ public class CommonElements {
         btnSection.click();
     }
 
-    public boolean checkSuccessfulLogin(String login){
+    public void checkSuccessfulLogin(String login){
         lblUserLogin.waitForIsElementPresent();
-        if (lblUserLogin.getText().equals(login))
-            return true;
-        return false;
+        assertTrue(lblUserLogin.getText().equals(login));
+        System.out.println("Login successful");
     }
 
     public void openCart(){

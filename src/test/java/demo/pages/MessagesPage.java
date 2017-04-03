@@ -6,6 +6,7 @@ import webdriver.elements.Button;
 import webdriver.elements.Label;
 import webdriver.elements.Link;
 import webdriver.elements.TextBox;
+import static org.testng.Assert.*;
 
 /**
  * Created by Артем on 28.03.2017.
@@ -49,15 +50,9 @@ public class MessagesPage extends BaseForm {
         new Link(By.xpath(String.format(locForMessByTheme, theme)), "Link of message").click();
     }
 
-    public String getHeadingOfMessage(){
-        return lblHeading.getText();
-    }
-
-    public String getSender(){
-        return lblSender.getText();
-    }
-
-    public String getTextOfMessage(){
-        return lblText.getText();
+    public void assertTrueMessage(String expSender, String expHeading,  String expTextMsg){
+        assertTrue(expSender.equals(lblSender.getText())
+                && expHeading.equals(lblHeading.getText())
+                && expTextMsg.equals(lblText.getText()));
     }
 }

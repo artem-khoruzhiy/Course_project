@@ -7,7 +7,6 @@ import demo.pages.SignInPage;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import webdriver.BaseTest;
-import static org.testng.Assert.*;
 
 /**
  * Created by Артем on 28.03.2017.
@@ -34,17 +33,22 @@ public class TestSendingMessages extends BaseTest {
 
     @Override
     public void runTest(){
+        logStep();
         MainPageOnliner mainPageOnliner = new MainPageOnliner();
 
+        logStep();
         CommonElements commonElements = new CommonElements();
         commonElements.enterToAccount();
 
+        logStep();
         SignInPage signInPage = new SignInPage();
         signInPage.signIn(senderLogin, senderPassword);
 
-        assertTrue(commonElements.checkSuccessfulLogin(senderLogin));
+        logStep();
+        commonElements.checkSuccessfulLogin(senderLogin);
         commonElements.navigateOnUserMenu("Cообщения");
 
+        logStep();
         MessagesPage messagesPage = new MessagesPage();
         messagesPage.navigateOnMessageMenu("Написать");
         messagesPage.enterAddressee(addresseeLogin);
@@ -52,23 +56,23 @@ public class TestSendingMessages extends BaseTest {
         messagesPage.enterMessage(textOfMessage);
         messagesPage.submitMessage();
 
+        logStep();
         commonElements.navigateOnUserMenu("Выйти");
 
+        logStep();
         signInPage.signIn(addresseeLogin, addresseePassword);
 
-        assertTrue(commonElements.checkSuccessfulLogin(addresseeLogin));
+        logStep();
+        commonElements.checkSuccessfulLogin(addresseeLogin);
 
+        logStep();
         messagesPage.navigateOnMessageMenu("Входящие");
         messagesPage.openMessageByTheme(themeOfMessage);
 
-        String actHeading = messagesPage.getHeadingOfMessage();
-        String actSender = messagesPage.getSender();
-        String actTextMsg = messagesPage.getTextOfMessage();
+        logStep();
+        messagesPage.assertTrueMessage(senderLogin, themeOfMessage, textOfMessage);
 
-        assertTrue(actHeading.equals(themeOfMessage)
-                && actSender.equals(senderLogin)
-                && actTextMsg.equals(textOfMessage));
-
+        logStep();
         commonElements.navigateOnUserMenu("Выйти");
     }
 }

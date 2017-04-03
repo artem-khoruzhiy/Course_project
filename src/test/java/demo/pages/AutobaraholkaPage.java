@@ -7,6 +7,7 @@ import webdriver.elements.Button;
 import webdriver.elements.ComboBox;
 import java.util.ArrayList;
 import java.util.List;
+import static org.testng.Assert.*;
 
 /**
  * Created by Артем on 29.03.2017.
@@ -43,15 +44,10 @@ public class AutobaraholkaPage extends BaseForm {
         return prices;
     }
 
-    public boolean checkOrder(){
+    public void checkOrder(){
         List<Double> list = getListOfPrices();
-        boolean condition = false;
         for (int i = 0; i < list.size() - 1; i++){
-            if (list.get(i).compareTo(list.get(i + 1)) <= 0)
-                condition = true;
-            else
-                return false;
+            assertTrue(list.get(i).compareTo(list.get(i + 1)) <= 0);
         }
-        return condition;
     }
 }
