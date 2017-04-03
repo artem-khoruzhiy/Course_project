@@ -1,7 +1,6 @@
 package demo.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
 import webdriver.BaseForm;
 import webdriver.elements.Button;
 

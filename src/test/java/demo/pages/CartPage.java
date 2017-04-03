@@ -2,7 +2,6 @@ package demo.pages;
 
 import org.openqa.selenium.By;
 import webdriver.BaseForm;
-import webdriver.Browser;
 import webdriver.elements.Button;
 import webdriver.elements.Label;
 import static org.testng.Assert.*;
@@ -12,13 +11,14 @@ import static org.testng.Assert.*;
  */
 public class CartPage extends BaseForm {
     private Label lblNameFirstProduct = new Label(By.xpath("//div[@class='cart-product-title']//span"), "First product");
-    private Button btnDeleteFromCart = new Button(By.xpath("//a[@title='Удалить']"), "Delete button");
+    private Button btnDeleteFromCart = new Button(By.xpath("//a[@title='Удалить']"), "Delete");
 
     public CartPage(){
         super(By.xpath("//h1[text()='Корзина']"), "Cart page");
     }
 
     public String getNameOfFirstProduct(){
+        lblNameFirstProduct.waitForIsElementPresent();
         return lblNameFirstProduct.getText();
     }
 
@@ -27,10 +27,7 @@ public class CartPage extends BaseForm {
         try {
             Thread.sleep(300);
         }catch (InterruptedException e){
-
         }
-//        assertTrue(Browser.getInstance().getDriver().findElements(By.xpath("//div[@class='cart-product-title']//span")).size() != 0);
-
     }
 
     public void assertTrueProduct(String expectedName, String actualName){

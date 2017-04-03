@@ -37,7 +37,6 @@ public class MobilePhonesPage extends BaseForm {
         }
         List<WebElement> listOfProducts = Browser.getInstance().getDriver().findElements(By.xpath(allNameOfPhonesLocator));
         for (WebElement el : listOfProducts){
-
             assertTrue(el.getText().contains(name));
         }
     }

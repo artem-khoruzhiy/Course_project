@@ -30,7 +30,6 @@ public class CommonElements {
     public void checkSuccessfulLogin(String login){
         lblUserLogin.waitForIsElementPresent();
         assertTrue(lblUserLogin.getText().equals(login));
-        System.out.println("Login successful");
     }
 
     public void openCart(){

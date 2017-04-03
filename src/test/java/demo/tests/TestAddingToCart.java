@@ -35,7 +35,7 @@ public class TestAddingToCart extends BaseTest{
         SignInPage signInPage = new SignInPage();
         signInPage.signIn(login, password);
 
-        logStep();
+        logStep("Login successful");
         commonElements.checkSuccessfulLogin(login);
 
         logStep();
